@@ -1,7 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
 import { handleError } from "../utils";
 
-const MONGODB_URL = process.env.MONGODB_URL || "";
+const MONGODB_URL = process.env.MONGODB_URL;
 
 interface MongooseConnection {
   conn: Mongoose | null;
@@ -26,7 +26,7 @@ export const connectToDatabase = async () => {
     cached.promise =
       cached.promise ||
       mongoose.connect(MONGODB_URL, {
-        dbName: "canvaDB1",
+        dbName: "canva_clone",
         bufferCommands: false,
       });
     cached.conn = await cached.promise;
